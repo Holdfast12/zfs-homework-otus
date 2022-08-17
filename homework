@@ -1,9 +1,16 @@
-yum -y install yum-utils
-yum -y install http://download.zfsonlinux.org/epel/zfs-release.el8_2.noarch.rpm
+yum install -y yum-utils 
+sudo yum -y install http://download.zfsonlinux.org/epel/zfs-release.el8_2.noarch.rpm
 gpg --quiet --with-fingerprint /etc/pki/rpm-gpg/RPM-GPG-KEY-zfsonlinux
-yum-config-manager --enable zfs-kmod
-yum-config-manager --disable zfs
-yum repolist enabled | grep zfs && echo ZFS repo enabled
+yum-config-manager --enable zfs-kmod 
+yum-config-manager --disable zfs 
+yum repolist  --enabled | grep zfs && echo ZFS repo enabled 
+yum install -y zfs
+в домашке где снепшот, может ругаться на версию ZFS
+modprobe zfs загружаем модуль
+yum repolist --enabled глянули наличие репозитория kmod
+cat /etc/redhat-release глянули версию дистрибутива
+используя kmod необходимо следить чтобы ядро было не слишком новым и пакет kmod существовал
+
 
 
 1.
